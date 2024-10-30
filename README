@@ -1,0 +1,55 @@
+# Casting Agency
+
+## Overview
+
+The Casting Agency is a system designed to streamline the process of creating movies and managing actors. As an Executive Producer, you will have the ability to oversee the management of actors and movies, ensuring a smooth workflow within the company.
+
+## Features
+
+- **Manage Movies**: Create, view, update, and delete movies with attributes like title and release date.
+- **Manage Actors**: Create, view, update, and delete actors with attributes such as name, age, and gender.
+- **Role-Based Access Control (RBAC)**: Different roles (Casting Assistant, Casting Director, Executive Producer) with varying permissions for managing actors and movies.
+- **API Endpoints**:
+  - **GET /actors**: Retrieve a list of actors.
+  - **GET /movies**: Retrieve a list of movies.
+  - **DELETE /actors/{id}**: Delete an actor by ID.
+  - **DELETE /movies/{id}**: Delete a movie by ID.
+  - **POST /create-actor**: Add a new actor.
+  - **POST /create-movie**: Add a new movie.
+  - **PATCH /update-actor**: Update an actor's information.
+  - **PATCH /update-movie**: Update a movie's information.
+
+## Roles
+
+### Casting Assistant
+
+- Can view actors and movies.
+
+### Casting Director
+
+- All permissions of a Casting Assistant.
+- Can add or delete actors from the database.
+- Can modify actors and movies.
+
+### Executive Producer
+
+- All permissions of a Casting Director.
+- Can add or delete movies from the database.
+
+### Role Setting
+
+- get:actors get list of actor
+- get:movies get list of movie
+- post:actors create a new actor
+- post:movies create a new movie
+- patch:actors update an actor
+- patch:movies update a movie
+- delete:actors delete an actor
+- delete:movies delete a movie
+
+## Installation
+
+### Prerequisites
+
+- Python 3.x
+- Flask, SQLAlchemy
