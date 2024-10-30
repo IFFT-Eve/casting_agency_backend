@@ -2,6 +2,7 @@ import os
 from sqlalchemy import Column, String, Integer, DateTime, Boolean
 from flask_sqlalchemy import SQLAlchemy
 import json
+from flask_migrate import Migrate
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASE_CONNECTION = os.getenv("DATABASE_CONNECTION")
@@ -9,8 +10,6 @@ DATABASE_CONNECTION = os.getenv("DATABASE_CONNECTION")
 db = SQLAlchemy()
 database_name = "casting_agency"
 database_path = DATABASE_URL.format(DATABASE_CONNECTION, database_name)
-
-port = int(os.environ.get("PORT", 5000))
 
 
 def setup_db(app):
@@ -20,7 +19,7 @@ def setup_db(app):
     db.app = app
     db.init_app(app)
     app.app_context().push()
-    app.run(host="0.0.0.0", port=port)
+    Migrate(app, db)
 
 
 def db_drop_and_create_all():
