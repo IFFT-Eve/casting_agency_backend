@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, abort
 # from sqlalchemy import exc
 from flask_cors import CORS
 
-from model.model import db_drop_and_create_all, setup_db, Actor, Movie
+from model.model import setup_db, Actor, Movie
 from dateutil import parser
 
 from auth.auth import AuthError, requires_auth
@@ -12,8 +12,6 @@ from auth.auth import AuthError, requires_auth
 app = Flask(__name__)
 setup_db(app)
 CORS(app)
-
-db_drop_and_create_all()
 
 
 # ROUTES
@@ -41,7 +39,7 @@ def getActorDetail(payload, id):
 @app.route("/create-actor", methods=["POST"])
 @requires_auth("post:actors")
 def createActor(payload):
-    print('body')
+    print("body")
     try:
         body = request.json
         name = body["name"]
