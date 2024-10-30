@@ -39,7 +39,6 @@ def getActorDetail(payload, id):
 @app.route("/create-actor", methods=["POST"])
 @requires_auth("post:actors")
 def createActor(payload):
-    print("body")
     try:
         body = request.json
         name = body["name"]

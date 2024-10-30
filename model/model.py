@@ -13,13 +13,14 @@ database_path = DATABASE_URL.format(DATABASE_CONNECTION, database_name)
 
 
 def setup_db(app):
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_path 
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "postgres://u8dbcmqtk3uthk:p34ee9f2f4a62dffe0fe7b5943177542e64b1b99cd4ff7afd2ce60d411d575ab6@cc0gj7hsrh0ht8.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6jud581qnlmqr"
+    )
     db.app = app
-    db.init_app(app)
+    # db.init_app(app)
     app.app_context().push()
     db.create_all()
     Migrate(app, db)
-
 
 
 class Movie(db.Model):
