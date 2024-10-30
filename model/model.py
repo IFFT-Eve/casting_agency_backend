@@ -17,9 +17,7 @@ def setup_db(app):
         "postgres://u8dbcmqtk3uthk:p34ee9f2f4a62dffe0fe7b5943177542e64b1b99cd4ff7afd2ce60d411d575ab6@cc0gj7hsrh0ht8.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6jud581qnlmqr"
     )
     db.app = app
-    # db.init_app(app)
     app.app_context().push()
-    db.create_all()
     Migrate(app, db)
 
 
