@@ -18,12 +18,13 @@ CORS(app)
 @app.route("/actors", methods=["GET"])
 @requires_auth("get:actors")
 def getAllActors(payload):
-    try:
+    # try:
         actors = Actor.query.all()
+        print(actors)
         format_actors = [actor.format() for actor in actors]
         return jsonify({"success": True, "data": format_actors})
-    except:
-        abort(404)
+    # except:
+    #     abort(404)
 
 
 @app.route("/actors/<int:id>", methods=["GET"])
