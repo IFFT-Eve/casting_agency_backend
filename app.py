@@ -20,7 +20,7 @@ CORS(app)
 def getAllActors(payload):
     # try:
         actors = Actor.query.all()
-        print()
+        print(actors)
         format_actors = [actor.format() for actor in actors]
         return jsonify({"success": True, "data": format_actors})
     # except:
